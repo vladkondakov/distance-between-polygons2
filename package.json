@@ -1,0 +1,20 @@
+{
+  "name": "dist-between-polygons",
+  "version": "1.0.0",
+  "description": "Calculate distance between two polygons in 2D",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "Distance",
+    "Polygons",
+    "2D"
+  ],
+  "author": "Vladislav Kondakov <vladisloove.kondakov@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "path": "^0.12.7"
+  }
+}
