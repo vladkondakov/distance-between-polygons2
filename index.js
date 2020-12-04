@@ -16,9 +16,9 @@ const getFileData = (p) => {
     let data = fs.readFileSync(p, 'utf-8');
 
     const lines = data.split(/\r\n|\r|\n/);
-
-    const n = parseInt(lines[0][0]);
-    const m = parseInt(lines[0][2]);
+    const numbersOfPoints = lines[0].split(' ');
+    const n = parseInt(numbersOfPoints[0]);
+    const m = parseInt(numbersOfPoints[1]);
 
     let i = 1; // Current index of line
 
