@@ -47,7 +47,6 @@ const getFileData = (p) => {
 
 };
 
-// Notice that secondPolygon is the invPolygon 
 const getMinkSum = (polygons) => {
     let { firstPolygon, invSecondPolygon } = polygons;
     const n = firstPolygon.length;
@@ -55,7 +54,7 @@ const getMinkSum = (polygons) => {
     let checkedPoints1 = new Array(n + m);
     let checkedPoints2 = new Array(n + m);
 
-    let j = function leftBottomPointIndex(polygon) {
+    const leftBottomPointIndex = (polygon) => {
         let resPoint = new Point(Number.POSITIVE_INFINITY, Number.POSITIVE_INFINITY);
         let index = 0;
         for (let i = 0; i < polygon.length; i++) {
@@ -66,17 +65,18 @@ const getMinkSum = (polygons) => {
             }
         }
         return index;
-    }(invSecondPolygon);
+    };
 
-    let i = 0;
+    let i = leftBottomPointIndex(firstPolygon);
+    let j = leftBottomPointIndex(invSecondPolygon);
 
     firstPolygon.push(new Point(firstPolygon[0].x, firstPolygon[0].y));
     invSecondPolygon.push(new Point(invSecondPolygon[0].x, invSecondPolygon[0].y));
 
     let minkSum = [];
     minkSum.push({
-        point: new Point(firstPolygon[0].x + invSecondPolygon[j].x, firstPolygon[0].y + invSecondPolygon[j].y),
-        top1: 0,
+        point: new Point(firstPolygon[i].x + invSecondPolygon[j].x, firstPolygon[i].y + invSecondPolygon[j].y),
+        top1: i % firstPolygon.length,
         top2: j % invSecondPolygon.length
     });
 
